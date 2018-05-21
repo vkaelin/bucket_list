@@ -1,0 +1,5 @@
+<% if(current) %>
+  <li><%= link_to(title, uri, class: 'current') %></li>
+<% else %>
+  <li><%= link_to(title, uri) %></li>
+<% end %>
