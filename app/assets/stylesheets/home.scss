@@ -961,55 +961,7 @@ table {
   border-bottom: 1px solid #e3e5e9;
 }
 
-/* ==========================================================================
-   NAVIGATION
-   ========================================================================== */
-
-/* Main navigation
-   ========================================================================== */
-/*ul*/.main-navigation {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.main-navigation li {
-  display: inline-block;
-}
-
-.main-navigation a {
-  color: #192127;
-  display: inline-block;
-  padding: 1.3rem 0.75rem;
-}
-
-/* Subnavigation
-   ========================================================================== */
-
-/*ul*/.sub-navigation {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 0 3.2rem;
-  border-bottom: 1px solid #e3e5e9;
-}
-
-.sub-navigation li {
-  display: inline-block;
-}
-
-.sub-navigation a {
-  display: inline-block;
-  padding: 1.6rem 0.8rem;
-  border-bottom: 2px solid #fff;
-}
-
-.sub-navigation a:hover,
-.sub-navigation a:focus,
-.sub-navigation a.current {
-  border-bottom-color: #192127;
-  color: #192127;
-  text-decoration: none;
-}
+@import 'navigation';
 
 /* Ordered navigation
    ========================================================================== */
@@ -1248,50 +1200,13 @@ table {
   padding: 3.2rem 0 6.4rem 0;
 }
 
-/* ==========================================================================
-   GLOBAL HEADER
-   ========================================================================== */
-
-.site-header {
-  border-bottom: 1px solid #e3e5e9;
-  margin: 0 0 6.4rem 0;
-}
-
-.site-header .content-wrapper {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.site-header .logo {
-  /* Margin equals Search margin + Nav padding */
-  margin: 0 1.55rem 0 0;
-}
-
-.site-header .global-search {
-  flex: 1 0 auto;
-  margin: 0 0.8rem -1px 0;
-}
-
-.site-header .input-row__field {
-  border-color: #2c9cf2;
-}
-
-.site-header .input-row__field:focus {
-  border-color: hsl(212, 64%, 36%);
-}
-
-/* Avoid line-break of navigation */
-.site-header__nav {
-  flex-shrink: 0;
-}
-
+@import 'header';
 
 /* Masthead
    ========================================================================== */
 
 .masthead {
-  background: #afbac4 url('../images/mountain-lake.jpg') no-repeat 50% 50% / cover;
+  background: #afbac4 asset-url('mountain-lake.jpg') no-repeat 50% 50% / cover;
   border-bottom: 1px solid #e3e5e9;
   padding: 1.6rem 0;
   margin: 0 0 6.4rem;
@@ -1381,49 +1296,8 @@ table {
   margin: 0;
 }
 
-/* ==========================================================================
-   GLOBAL FOOTER
-   ========================================================================== */
 
-.site-footer {
-  background-color: #192127;
-  color: #bbc1c6;
-  box-sizing: border-box;
-  padding: 6.4rem 0 4.8rem;
-  margin-top: auto;
-}
-
-.site-footer > .content-wrapper {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.footer__logo {
-  margin: 0 1.6rem 1.6rem 0;
-}
-
-.footer__navigation {
-  flex-grow: 1;
-  flex-shrink: 0;
-  margin: 0 auto 1.6rem 0;
-}
-
-.footer__navigation ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer__navigation li {
-  display: inline-table;
-  margin: 0 1.6rem 0 0;
-}
-
-
-.footer__navigation a {
-  color: #e3e5e9;
-}
+@import 'footer';
 
 /* ==========================================================================
    PAGE HEADER
