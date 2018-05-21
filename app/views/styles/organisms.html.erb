@@ -55,18 +55,9 @@
     <h2>02. Ideas</h2>
     <div>
       <ul class="bare-list float-grid css-grid">
-        <li>
-          <%= render(partial: 'idea_card', locals: { card_title: 'See the Northern Lights' }) %>
-        </li>
-        <li>
-          <%= render(partial: 'idea_card', locals: { card_title: 'A very long title to see how text wraps in the Idea card' }) %>
-        </li>
-        <li>
-          <%= render(partial: 'idea_card', locals: { card_title: 'Short' }) %>
-        </li>
-        <li>
-          <%= render(partial: 'idea_card', locals: { card_title: 'Short' }) %>
-        </li>
+        <% ['See the Northern Lights', 'A very long title to see how text wraps in the Idea card', 'Short', 'Short'].each do |item| %>
+          <li><%= render(partial: 'idea_card', locals: { card_title: item }) %></li>
+        <% end %>
       </ul>
     </div>
   </section>
