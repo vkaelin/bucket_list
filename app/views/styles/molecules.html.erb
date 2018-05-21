@@ -2,9 +2,9 @@
   <div>
     <nav>
       <ul class="sub-navigation">
-        <li><a href="styleguide.html">Atoms</a></li>
+        <li><%= link_to('Atoms', '/styles/atoms') %></li>
         <li><a href="molecules.html" class="current">Molecules</a></li>
-        <li><a href="organisms.html">Organisms</a></li>
+        <li><%= link_to('Organisms', '/styles/organisms') %></li>
         <li><a href="templates.html">Templates</a></li>
         <li><a href="#pages">Pages</a></li>
       </ul>
@@ -32,7 +32,7 @@
   </div>
   <section class="sg-section" id="card">
     <h2>01. Card</h2>
-    <%= render(partial: 'idea_card') %>
+    <%= render(partial: 'idea_card', locals: { card_title: 'Watch the Northern Lights' }) %>
   </section>
   <section class="sg-section" id="logo">
     <h2>02. Logo</h2>
