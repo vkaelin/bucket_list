@@ -5,16 +5,8 @@
   <div class="content-wrapper">
     <ul class="bare-list float-grid css-grid">
 
-      <% ['See the Northern lights',
-          'Cycling across the Alps',
-          'Test drive a Lamborghini',
-          'Write a short story',
-          'Make a curry',
-          'Volunteer for a charity for one weekend',
-          'Go skydiving',
-          'Inter-rail across Europe',
-          'Learn how to ski'].each do |item| %>
-        <li><%= render(partial: 'idea_card', locals: { card_title: item }) %></li>
+      <% @ideas.each do |idea| %>
+        <li><%= render(partial: 'idea_card', locals: { card_title: idea.title }) %></li>
       <% end %>
 
     </ul>
