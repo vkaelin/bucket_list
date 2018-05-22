@@ -1,23 +1,23 @@
 <main>
   <div class="content-wrapper">
-    <h1>Update idea</h1>
+    <h1>Edit idea</h1>
 
-    <%= form_tag(ideas_update_path, class: 'form--inpage') do %>
+    <%= form_tag(idea_path(@idea), method: 'PATCH', class: 'form--inpage') do %>
       <div class="input-group input-group--horisontal">
         <label class="input-group__label" for="title">Title</label>
-        <%= text_field_tag('title', nil, class: 'input-group__field', placeholder: 'E.g. Ride a camel') %>
+        <%= text_field_tag('title', @idea.title, class: 'input-group__field', placeholder: 'E.g. Ride a camel') %>
       </div>
       <div class="input-group input-group--horisontal">
         <label class="input-group__label" for="done_count">Done count</label>
-        <%= text_field_tag('done_count', nil, class: 'input-group__field') %>
+        <%= text_field_tag('done_count', @idea.done_count, class: 'input-group__field') %>
       </div>
       <div class="input-group input-group--horisontal">
         <label class="input-group__label" for="photo_url">Photo URL</label>
-        <%= text_field_tag('photo_url', nil, class: 'input-group__field') %>
+        <%= text_field_tag('photo_url', @idea.photo_url, class: 'input-group__field') %>
       </div>
       <div class="prompt">
         <a class="prompt__cancel" href="#cancel">Cancel</a>
-        <%= button_tag('Create idea', class: 'btn btn--primary prompt__confirm') %>
+        <%= button_tag('Update', class: 'btn btn--primary prompt__confirm') %>
       </div>
     <% end %>
 
