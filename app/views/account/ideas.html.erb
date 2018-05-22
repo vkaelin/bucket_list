@@ -8,7 +8,7 @@
   <div class="content-wrapper">
     <ul class="bare-list float-grid css-grid">
       <% @ideas.each do |idea| %>
-        <li><%= render(partial: 'editable_idea_card', locals: { card_title: idea.title }) %></li>
+        <li><%= render(partial: 'editable_idea_card', locals: { card_title: idea.title, done_count: idea.done_count }) %></li>
       <% end %>
     </ul>
   </div>
