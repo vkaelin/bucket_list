@@ -37,4 +37,25 @@ class IdeasTest < ApplicationSystemTestCase
     assert page.has_content?('Learn Ruby on Rails')
     assert page.has_content?('73 have done this')
   end
+
+  test 'search' do
+    first_idea = Idea.new
+    first_idea.title = 'Climb Mont Blanc'
+    first_idea.save!
+
+    second_idea = Idea.new
+    second_idea.title = 'Visit Niagara Falls'
+    second_idea.save!
+
+    visit(root_path)
+    fill_in('q', with: 'Mont').send_keys(:enter)
+    assert current_path.include?(ideas_index_path)
+    assert page.has_content?('Climb Mont Blanc')
+    refute page.has_content?('Visit Niagara Falls')
+  end
+
+  test 'No search results' do
+    visit(ideas_index_path)
+    assert page.has_content?('No ideas found!')
+  end
 end
