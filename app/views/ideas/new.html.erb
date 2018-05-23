@@ -1,8 +1,8 @@
 <main>
   <div class="content-wrapper">
-    <h1>Update idea</h1>
+    <h1>Create idea</h1>
 
-    <%= form_tag(ideas_update_path, class: 'form--inpage') do %>
+    <%= form_tag(ideas_create_path, class: 'form--inpage') do %>
       <div class="input-group input-group--horisontal">
         <label class="input-group__label" for="title">Title</label>
         <%= text_field_tag('title', nil, class: 'input-group__field', placeholder: 'E.g. Ride a camel') %>
