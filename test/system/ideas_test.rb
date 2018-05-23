@@ -48,7 +48,8 @@ class IdeasTest < ApplicationSystemTestCase
     second_idea.save!
 
     visit(root_path)
-    fill_in('q', with: 'Mont').send_keys(:enter)
+    fill_in('q', with: 'Mont')
+    click_on('Search', match: :first)
     assert current_path.include?(ideas_index_path)
     assert page.has_content?('Climb Mont Blanc')
     refute page.has_content?('Visit Niagara Falls')
