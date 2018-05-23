@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card__thumb">
-    <a href="ideas/one-example-idea.html">
+    <%= link_to(show_idea_path(idea)) do %>
       <%= render(partial: 'idea_photo', locals: { photo_url: photo_url }) %>
-    </a>
+    <% end %>
     <div class="card__intro">
       <h4 class="card__title"><%= card_title %></h4>
       <span><%= done_count %> have done this</span>

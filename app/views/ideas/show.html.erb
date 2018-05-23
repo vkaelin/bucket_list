@@ -13,12 +13,12 @@
           <h1 class="gamma"><%= @idea.title %></h1>
           <ul class="horizontal-list btn-group">
             <li>
-              <a class="btn delta" href="#no-link">
+              <%= link_to(edit_idea_path(@idea), class: 'btn delta') do %>
                 <svg class="icon-check icon--sm" role="presentation">
                   <!-- <use xlink:href="images/icons-defs.svg#check"></use> -->
                 </svg>
                 Edit
-              </a>
+              <% end %>
             </li>
             <li>
               <button class="btn delta" type="button">
@@ -35,7 +35,7 @@
             </p>
           </div>
           <div class="goal__meta">
-            <span>Created on <time datetime="2017-08-27T03:48">27/08/2017</time></span>
+            <span>Created on <time datetime="2017-08-27T03:48"><%= @idea.created_at.strftime("%d %b '%y") %></time></span>
             <span><%= @idea.done_count %> have done this</span>
             <span><a href="#comments">3 comments</a></span>
           </div>
