@@ -1,27 +1,27 @@
 require 'test_helper'
 
 class IdeaTest < ActiveSupport::TestCase
-  # test 'the first empty Idea created is first in the list' do
-  #   first_idea = Idea.new
-  #   first_idea.save!
-  #   second_idea = Idea.new
-  #   second_idea.save!
-  #   assert_equal(first_idea, Idea.all.first)
-  # end
-  #
-  # test 'the first complete Idea created is first in the list' do
-  #   first_idea = Idea.new
-  #   first_idea.title = 'Cycle the length of the United Kingdom'
-  #   first_idea.photo_url = 'http://mybucketlist.ch/an_image.jpg'
-  #   first_idea.done_count = 12
-  #   first_idea.save!
-  #   second_idea = Idea.new
-  #   second_idea.title = 'Visit Japan'
-  #   second_idea.photo_url = 'http://mybucketlist.ch/second_image.jpg'
-  #   second_idea.done_count = 3
-  #   second_idea.save!
-  #   assert_equal(first_idea, Idea.all.first)
-  # end
+  test 'the first empty Idea created is first in the list' do
+    first_idea = Idea.new
+    first_idea.save!
+    second_idea = Idea.new
+    second_idea.save!
+    assert_equal(first_idea, Idea.all.first)
+  end
+
+  test 'the first complete Idea created is first in the list' do
+    first_idea = Idea.new
+    first_idea.title = 'Cycle the length of the United Kingdom'
+    first_idea.photo_url = 'http://mybucketlist.ch/an_image.jpg'
+    first_idea.done_count = 12
+    first_idea.save!
+    second_idea = Idea.new
+    second_idea.title = 'Visit Japan'
+    second_idea.photo_url = 'http://mybucketlist.ch/second_image.jpg'
+    second_idea.done_count = 3
+    second_idea.save!
+    assert_equal(first_idea, Idea.all.first)
+  end
 
   test 'updated_at is changed after updating title' do
     idea = Idea.new
@@ -79,5 +79,32 @@ class IdeaTest < ActiveSupport::TestCase
 
     results = Idea.search("Stand")
     assert_equal 2, results.count
+  end
+
+  test 'most_recent with no Ideas' do
+    assert_empty Idea.most_recent
+  end
+
+  test 'most_recent with two Ideas' do
+    first_idea = Idea.new
+    first_idea.title = 'Exciting Idea 1'
+    first_idea.save!
+    second_idea = Idea.new
+    second_idea.title = 'Exciting Idea 2'
+    second_idea.save!
+
+    assert_equal 2, Idea.most_recent.length
+    assert_equal Idea.most_recent.first, second_idea
+  end
+
+  test 'most_recent with six Ideas' do
+    6.times do |i|
+      idea = Idea.new
+      idea.title = "Exciting Idea #{i+1}"
+      idea.save!
+    end
+
+    assert_equal 3, Idea.most_recent.length
+    assert_equal Idea.most_recent.first.title, 'Exciting Idea 6'
   end
 end

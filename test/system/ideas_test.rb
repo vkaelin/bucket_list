@@ -59,4 +59,18 @@ class IdeasTest < ApplicationSystemTestCase
     visit(ideas_index_path)
     assert page.has_content?('No ideas found!')
   end
+
+  test 'homepage hightlights' do
+    4.times do |i|
+      idea = Idea.new
+      idea.title = "Exciting Idea #{i+1}"
+      idea.save!
+    end
+
+    visit(root_path)
+    assert page.has_content?('Exciting Idea 4')
+    assert page.has_content?('Exciting Idea 3')
+    assert page.has_content?('Exciting Idea 2')
+    refute page.has_content?('Exciting Idea 1')
+  end
 end
