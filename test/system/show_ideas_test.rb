@@ -7,7 +7,7 @@ class ShowIdeasTest < ApplicationSystemTestCase
     idea.done_count = 27
     idea.save!
 
-    visit(show_idea_path(idea))
+    visit(idea_path(idea))
     assert page.has_content?('See the northern lights')
     assert page.has_content?('27 have done')
     assert page.has_content?(idea.created_at.strftime("%d %b '%y"))

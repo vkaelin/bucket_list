@@ -2,11 +2,11 @@ require "application_system_test_case"
 
 class IdeasTest < ApplicationSystemTestCase
   test 'create new idea' do
-    visit('ideas/new')
-    fill_in('title', with: 'Learn to swim')
-    fill_in('done_count', with: 36)
-    fill_in('photo_url', with: '/images/mountains-forests.jpg')
-    click_on('Create idea')
+    visit(new_idea_path)
+    fill_in('Title', with: 'Learn to swim')
+    fill_in('Done count', with: 36)
+    fill_in('Photo url', with: '/images/mountains-forests.jpg')
+    click_on('Create Idea')
     assert page.has_content?('Learn to swim')
   end
 
@@ -19,7 +19,7 @@ class IdeasTest < ApplicationSystemTestCase
     second_idea.title = 'Start a blog'
     second_idea.save!
 
-    visit('ideas/index')
+    visit(ideas_path)
     assert page.has_content?('Join a tennis club')
     assert page.has_content?('Start a blog')
   end
@@ -29,8 +29,8 @@ class IdeasTest < ApplicationSystemTestCase
     idea.save!
 
     visit(edit_idea_path(idea))
-    fill_in('done_count', with: 73)
-    fill_in('title', with: 'Learn Ruby on Rails')
+    fill_in('Done count', with: 73)
+    fill_in('Title', with: 'Learn Ruby on Rails')
     click_on('Update')
 
     click_on('Learn Ruby on Rails')
@@ -50,13 +50,13 @@ class IdeasTest < ApplicationSystemTestCase
     visit(root_path)
     fill_in('q', with: 'Mont')
     click_on('Search', match: :first)
-    assert current_path.include?(ideas_index_path)
+    assert current_path.include?(ideas_path)
     assert page.has_content?('Climb Mont Blanc')
     refute page.has_content?('Visit Niagara Falls')
   end
 
   test 'No search results' do
-    visit(ideas_index_path)
+    visit(ideas_path)
     assert page.has_content?('No ideas found!')
   end
 
