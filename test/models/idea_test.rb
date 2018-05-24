@@ -78,7 +78,7 @@ class IdeaTest < ActiveSupport::TestCase
     second_idea.save!
 
     results = Idea.search("Stand")
-    assert_equal 2, results.count
+    assert_equal 2, results.length
   end
 
   test 'most_recent with no Ideas' do
@@ -106,5 +106,28 @@ class IdeaTest < ActiveSupport::TestCase
 
     assert_equal 3, Idea.most_recent.length
     assert_equal Idea.most_recent.first.title, 'Exciting Idea 6'
+  end
+
+  test 'search with description' do
+    idea = Idea.new
+    idea.title = 'Surfing in Portugal'
+    idea.description = 'See what Atlantic coast waves are like!'
+    idea.save!
+
+    assert_equal 1,  Idea.search('coast').length
+  end
+
+  test 'search with description and title' do
+    idea_1 = Idea.new
+    idea_1.title = 'Overnight hike in Switzerland'
+    idea_1.description = 'Stay in a Swiss refuge in the mountains'
+    idea_1.save!
+
+    idea_2 = Idea.new
+    idea_2.title = 'Hike the mountains in Italy'
+    idea_2.description = 'See the Dolomites and Italian Alps'
+    idea_2.save!
+
+    assert_equal 2,  Idea.search('mountains').length
   end
 end
