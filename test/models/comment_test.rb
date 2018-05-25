@@ -5,7 +5,7 @@ class CommentTest < ActiveSupport::TestCase
     idea_1 = Idea.new title: 'Valid idea'
     idea_1.save!
 
-    comment = Comment.new(body: 'I\'d like to do this!', idea: idea_1)
+    comment = Comment.new(body: 'I\'d like to do this!', idea: idea_1, user: User.new)
     comment.save!
 
     idea_2 = Idea.new title: 'Second idea'
@@ -21,7 +21,7 @@ class CommentTest < ActiveSupport::TestCase
     idea = Idea.new title: 'Valid idea'
     idea.save!
 
-    comment = Comment.new body: 'Great idea!'
+    comment = Comment.new body: 'Great idea!', user: User.new
     idea.comments << comment
     idea.save!
 
@@ -32,8 +32,8 @@ class CommentTest < ActiveSupport::TestCase
     idea = Idea.new title: 'Valid idea'
     idea.save!
 
-    comment_1 = Comment.new body: 'This would be great fun'
-    comment_2 = Comment.new body: 'I agree! I\'d like to do this as well'
+    comment_1 = Comment.new body: 'This would be great fun', user: User.new
+    comment_2 = Comment.new body: 'I agree! I\'d like to do this as well', user: User.new
 
     idea.comments << comment_1
     idea.comments << comment_2
