@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class IdeaCommentsTest < ApplicationSystemTestCase
   test 'adding a Comment to an Idea' do
-    idea = Idea.new title: 'Valid idea'
+    idea = Idea.new title: 'Valid idea', user: User.new
     idea.save!
 
     user = User.new email: 'valikaelin@gmail.com'
@@ -20,7 +20,7 @@ class IdeaCommentsTest < ApplicationSystemTestCase
   end
 
   test 'comments cannot be added when not logged in' do
-    idea = Idea.new title: 'Valid idea'
+    idea = Idea.new title: 'Valid idea', user: User.new
     idea.save!
 
     visit(idea_path(idea))

@@ -2,9 +2,7 @@ require "application_system_test_case"
 
 class ShowIdeasTest < ApplicationSystemTestCase
   test 'show displays title' do
-    idea = Idea.new
-    idea.title = "See the northern lights"
-    idea.done_count = 27
+    idea = Idea.new title: "See the northern lights", done_count: 27, user: User.new
     idea.save!
 
     visit(idea_path(idea))

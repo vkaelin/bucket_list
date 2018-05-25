@@ -2,13 +2,13 @@ require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
   test 'changing the associated Idea for a Comment' do
-    idea_1 = Idea.new title: 'Valid idea'
+    idea_1 = Idea.new title: 'Valid idea', user: User.new
     idea_1.save!
 
     comment = Comment.new(body: 'I\'d like to do this!', idea: idea_1, user: User.new)
     comment.save!
 
-    idea_2 = Idea.new title: 'Second idea'
+    idea_2 = Idea.new title: 'Second idea', user: User.new
     idea_2.save!
 
     comment.idea = idea_2
@@ -18,7 +18,7 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test 'cascading save' do
-    idea = Idea.new title: 'Valid idea'
+    idea = Idea.new title: 'Valid idea', user: User.new
     idea.save!
 
     comment = Comment.new body: 'Great idea!', user: User.new
@@ -29,7 +29,7 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test 'Comments are ordered correctly' do
-    idea = Idea.new title: 'Valid idea'
+    idea = Idea.new title: 'Valid idea', user: User.new
     idea.save!
 
     comment_1 = Comment.new body: 'This would be great fun', user: User.new
