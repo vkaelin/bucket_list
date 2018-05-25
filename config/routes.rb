@@ -9,18 +9,9 @@ Rails.application.routes.draw do
 
   get 'styles/organisms'
 
-  resources :ideas
-  # get 'ideas/index'
-  #
-  # get  '/ideas/new'
-  #
-  # post '/ideas/create'
-  #
-  # get   '/ideas/:id/edit', to: 'ideas#edit', as: 'edit_idea'
-  #
-  # patch '/ideas/:id', to: 'ideas#update', as: 'idea'
-  #
-  # get 'ideas/:id', to: 'ideas#show', as: 'show_idea'
+  resources :ideas do
+    resources :comments
+  end
 
   get '/account/ideas'
 

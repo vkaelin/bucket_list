@@ -7,7 +7,7 @@
       <div class="media__body">
         <div class="goal">
           <div class="goal__owner">
-            <img class="avatar" src="#images/avatar.png" alt="Portrait of Frederick Rose">
+            <img class="avatar" src="/images/avatar.png" alt="Portrait of Frederick Rose">
             <p>Created by <a href="#">Frederick Rose</a></p>
           </div>
           <h1 class="gamma"><%= @idea.title %></h1>
@@ -55,38 +55,26 @@
   <div class="content-wrapper">
     <div class="comments">
       <h2 class="comments__title">Discussion <span>3 comments</span></h2>
-
-      <form class="comments__input" action="goal.html" method="post">
-        <img class="avatar" src="#images/avatar.png" alt="Portrait of logged in user">
+      
+      <%= form_for([@idea, @comment], html: { class: 'comments__input' }) do |form| %>
+        <img class="avatar" src="/images/avatar.png" alt="Portrait of logged in user">
         <div class="input-group">
-          <label class="input-group__label" for="comment">Add a comment</label>
-          <textarea id="comment" class="input-group__field"></textarea>
+          <%= form.label(:body, 'Add a comment', class: 'input-group__label') %>
+          <%= form.text_area(:body, class: 'input-group__field') %>
         </div>
-        <button class="btn btn--primary" type="submit">Post</button>
-      </form>
+        <%= form.submit('Post', class: 'btn btn--primary') %>
+      <% end %>
 
       <ul class="comments__listing">
-        <li class="comment">
-          <img class="avatar" src="#images/avatar.png" alt="Portrait of commenter">
-          <div class="comment__body">
-            <h3 class="comment__title">Tom Jenkinson <time datetime="2017-08-28T13:48">Today</time></h3>
-            <p>I've done this and it's amazing!  I'll never forget it.</p>
-          </div>
-        </li>
-        <li class="comment">
-          <img class="avatar" src="#images/avatar.png" alt="Portrait of commenter">
-          <div class="comment__body">
-            <h3 class="comment__title">Emily Walker <time datetime="2017-08-27T03:48">Yesterday</time></h3>
-            <p>When do you think that you'll get a chance to do this?  Have you already planned it?</p>
-          </div>
-        </li>
-        <li class="comment">
-          <img class="avatar" src="#images/avatar.png" alt="Portrait of commenter">
-          <div class="comment__body">
-            <h3 class="comment__title">Claire Prince <time datetime="2016-06-10T09:48">10. June 2016</time></h3>
-            <p>I'm thinking about this as well.</p>
-          </div>
-        </li>
+        <% @idea.comments.each do |comment| %>
+          <li class="comment">
+            <img class="avatar" src="/images/avatar.png" alt="Portrait of commenter">
+            <div class="comment__body">
+              <h3 class="comment__title">Tom Jenkinson <time datetime="2017-08-28T13:48">Today</time></h3>
+              <p><%= comment.body %></p>
+            </div>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
