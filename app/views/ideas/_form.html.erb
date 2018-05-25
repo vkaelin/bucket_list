@@ -1,3 +1,8 @@
+<% if(idea.errors.any?) %>
+  <div class="alert alert--wide">
+    <%= idea.errors.full_messages.join('<br />') %>
+  </div>
+<% end %>
 <%= form_for(idea, html: { class: 'form--inpage' }) do |form| %>
   <div class="input-group input-group--horisontal">
     <%= form.label(:title, class: 'input-group__label') %>

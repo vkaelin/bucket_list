@@ -97,4 +97,23 @@ class IdeasTest < ApplicationSystemTestCase
     assert page.has_content?('Visit Provence')
     refute page.has_content?('Overnight hike in Switzerland')
   end
+
+  test 'new idea with a too long title' do
+    visit(new_idea_path)
+    fill_in('Title', with: 'This is a very, very, very, very, very, very, very, very, very, too much long title for an Idea')
+    fill_in('Done count', with: 36)
+    fill_in('Photo url', with: '/images/mountains-forests.jpg')
+    click_on('Create Idea')
+    assert page.has_content?('Title is too long')
+  end
+
+  test 'existing idea updated with a too long title' do
+    idea = Idea.new title: 'This is a good title'
+    idea.save!
+
+    visit(edit_idea_path(idea))
+    fill_in('Title', with: 'This is a very, very, very, very, very, very, very, very, very, too much long title for an Idea')
+    click_on('Update Idea')
+    assert page.has_content?('Title is too long')
+  end
 end
