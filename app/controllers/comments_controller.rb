@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
   def create
-    idea = Idea.find(params[:idea_id])
+    @user = User.find(session[:user_id])
+    @idea = Idea.find(params[:idea_id])
     @comment = Comment.new(comment_params)
-    @comment.idea = idea
-    @comment.save!
-    redirect_to(idea_path(idea))
+    @comment.user = @user
+    @comment.idea = @idea
+    @comment.save
+    puts "Errors: #{@comment.errors.full_messages}"
+    redirect_to(idea_path(@idea))
   end
 
   private
