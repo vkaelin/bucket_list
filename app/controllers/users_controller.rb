@@ -4,14 +4,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.find_or_create_by(user_params)
-    session[:user_id] = user.id
-    redirect_to(ideas_path)
+    @user = User.new(user_params)
+    if (@user.save)
+      session[:user_id] = @user.id
+      redirect_to(ideas_path)
+    else
+      render 'new'
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :password)
   end
 end
