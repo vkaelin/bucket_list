@@ -9,14 +9,15 @@ Rails.application.routes.draw do
 
   get 'styles/organisms'
 
-  resources :users
+  resources :users do
+    resources :goals
+  end
 
   resources :ideas do
     resources :comments
   end
 
   get '/account/ideas'
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
