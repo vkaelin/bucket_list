@@ -19,7 +19,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  get '/account/ideas'
+  get 'account', to: 'account#edit'
+  patch 'account', to: 'account#update'
+  get 'account/ideas'
+  get 'account/goals'
 
   get 'signup', to: 'users#new'
 
