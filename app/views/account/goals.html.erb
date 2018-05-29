@@ -14,7 +14,7 @@
     <% if (@goals.any?) %>
       <ul class="bare-list float-grid css-grid">
         <% @goals.each do |goal| %>
-          <li></li>
+          <li><%= render(partial: 'goal_card', locals: { goal: goal }) %></li>
         <% end %>
       </ul>
       <div class="see-more">
