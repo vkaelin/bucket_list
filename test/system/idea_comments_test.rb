@@ -2,13 +2,15 @@ require "application_system_test_case"
 
 class IdeaCommentsTest < ApplicationSystemTestCase
   test 'adding a Comment to an Idea' do
-    idea = Idea.new title: 'Valid idea', user: User.new
+    user = User.new email: 'valikaelin@gmail.com', password: 'password'
+    user.save!
+
+    idea = Idea.new title: 'Valid idea', user: user
     idea.save!
 
-    user = User.new email: 'valikaelin@gmail.com'
-    user.save!
-    visit(new_user_path)
+    visit(new_session_path)
     fill_in('Email', with: user.email)
+    fill_in('Password', with: user.password)
     click_on('Log in')
 
     visit(idea_path(idea))

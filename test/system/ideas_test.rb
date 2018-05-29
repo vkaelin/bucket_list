@@ -2,10 +2,12 @@ require "application_system_test_case"
 
 class IdeasTest < ApplicationSystemTestCase
   test 'create new idea' do
-    user = User.new email: 'test@epfl.ch'
+    user = User.new email: 'test@epfl.ch', password: 'password'
     user.save!
-    visit(new_user_path)
+
+    visit(new_session_path)
     fill_in('Email', with: user.email)
+    fill_in('password', with: user.password)
     click_on('Log in')
 
     visit(new_idea_path)
@@ -29,7 +31,8 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'editing an Idea' do
-    idea = Idea.new title: 'Unedited idea', user: User.new
+    user = User.new email: 'new@epfl.ch', password: 'password'
+    idea = Idea.new title: 'Unedited idea', user: user
     idea.save!
 
     visit(edit_idea_path(idea))
@@ -96,12 +99,14 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'new idea with a too long title' do
-    user = User.new email: 'test@epfl.ch'
+    user = User.new email: 'test@epfl.ch', password: 'password'
     user.save!
-    visit(new_user_path)
+
+    visit(new_session_path)
     fill_in('Email', with: user.email)
+    fill_in('Password', with: user.password)
     click_on('Log in')
-    
+
     visit(new_idea_path)
     fill_in('Title', with: 'This is a very, very, very, very, very, very, very, very, very, too much long title for an Idea')
     fill_in('Done count', with: 36)
