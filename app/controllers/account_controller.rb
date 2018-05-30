@@ -11,11 +11,11 @@ class AccountController < ApplicationController
 
   def ideas
     user = User.find(session[:user_id])
-    @ideas = user.ideas
+    @ideas = user.ideas.page(params[:page])
   end
 
   def goals
-    @goals = current_user.goals
+    @goals = current_user.goals.page(params[:page])
   end
 
   private

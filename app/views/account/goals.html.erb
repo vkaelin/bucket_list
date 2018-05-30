@@ -18,7 +18,7 @@
         <% end %>
       </ul>
       <div class="see-more">
-        <button class="btn" type="button" data-more="true">See more</button>
+        <%= paginate @goals %>
       </div>
     <% else %>
       <h3>You don't currently have any goals.</h3>

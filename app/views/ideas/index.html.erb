@@ -10,7 +10,7 @@
         <% end %>
       </ul>
       <div class="see-more">
-        <button class="btn" type="button" data-more="true">See more</button>
+        <%= paginate @ideas %>
       </div>
     <% else %>
       <h3>No ideas found!</h3>
