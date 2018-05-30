@@ -1,13 +1,14 @@
 class CommentsController < ApplicationController
+  before_action :ensure_authenticated
+
   def create
-    @user = User.find(session[:user_id])
-    @idea = Idea.find(params[:idea_id])
-    @comment = Comment.new(comment_params)
-    @comment.user = @user
-    @comment.idea = @idea
-    @comment.save
-    puts "Errors: #{@comment.errors.full_messages}"
-    redirect_to(idea_path(@idea))
+    idea = Idea.find(params[:idea_id])
+    comment = Comment.new(comment_params)
+    comment.idea = idea
+    comment.user = current_user
+    comment.save!
+
+    redirect_to(idea_path(idea))
   end
 
   private
