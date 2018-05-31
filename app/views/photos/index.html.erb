@@ -8,21 +8,32 @@
     </nav>
     <h1>Suggested</h1>
     <div class="content-wrapper">
-      <ul class="bare-list float-grid css-grid">
-        <li>
-          <div class="card">
-            <div class="card__thumb">
-              <%= image_tag(@photo.urls.regular) %>
-            </div>
+      <%= form_tag(idea_photos_path(@idea), method: :get, class: 'form--inpage') do %>
+        <div class="input-inline">
+          <label class="input-group__label" for="query">Change search term</label>
+          <div class="input-row">
+            <%= text_field_tag(:query, @query, class: 'input-row__field') %>
+            <%= submit_tag('Go', class: 'btn btn--primary btn--inline') %>
           </div>
-          <%= form_tag(idea_photos_path(@idea)) do %>
-              <div class="prompt">
-                <%= hidden_field_tag(:photo_url, @photo.urls.regular) %>
-                <%= submit_tag('Use this photo', class: 'btn btn--primary prompt__confirm') %>
+        </div>
+      <% end %>
+      <ul class="bare-list float-grid css-grid">
+        <% @photos.each do |photo| %>
+          <li>
+            <div class="card">
+              <div class="card__thumb">
+                <%= image_tag(photo.urls.regular) %>
               </div>
-          <% end %>
-          <p>Photo taken by <%= @photo.user.name %>, available at <a href="https://unsplash.com">unsplash.com</a></p>
-        </li>
+            </div>
+            <%= form_tag(idea_photos_path(@idea)) do %>
+                <div class="prompt">
+                  <%= hidden_field_tag(:photo_url, photo.urls.regular) %>
+                  <%= submit_tag('Use this photo', class: 'btn btn--primary prompt__confirm') %>
+                </div>
+            <% end %>
+            <p>Photo taken by <%= photo.user.name %>, available at <%= link_to('unsplash.com', photo.links.html) %></p>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
