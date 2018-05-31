@@ -15,18 +15,18 @@
             <li>
               <%= link_to(edit_idea_path(@idea), class: 'btn delta') do %>
                 <svg class="icon-check icon--sm" role="presentation">
-                  <!-- <use xlink:href="images/icons-defs.svg#check"></use> -->
+                  <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#done") %>"></use>
                 </svg>
                 Edit
               <% end %>
             </li>
             <li>
-              <% if(@user.present?) %>
-                <%= form_tag(user_goals_path(@user)) do %>
+              <% if(logged_in?) %>
+                <%= form_tag(user_goals_path(current_user)) do %>
                   <%= hidden_field_tag(:idea_id, @idea.id) %>
-                  <%= button_tag(class: 'btn delta', type: 'submit', disable: @disable_add_goal) do %>
+                  <%= button_tag(class: 'btn delta', type: 'submit', disabled: @disable_add_goal) do %>
                     <svg class="icon-heart icon--sm" role="presentation">
-                      <!-- <use xlink:href="images/icons/icons-defs.svg#heart"></use> -->
+                      <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#heart") %>"></use>
                     </svg>
                     Add
                   <% end %>
