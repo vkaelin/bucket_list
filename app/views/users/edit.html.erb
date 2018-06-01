@@ -19,10 +19,6 @@
           <%= form.text_field(:name, class: 'input-group__field', placeholder: 'e.g. Diana Prince') %>
         </div>
         <div class="input-group input-group--horizontal">
-          <%= form.label(:avatar_url, class: 'input-group__label') %>
-          <%= form.text_field(:avatar_url, class: 'input-group__field') %>
-        </div>
-        <div class="input-group input-group--horizontal">
           <%= form.label(:role, class: 'input-group__label') %>
           <%= form.select(:role, %w(registered admin), {}, class: 'input-group__field') %>
         </div>
