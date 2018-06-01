@@ -8,7 +8,10 @@
         <li><a href="#nolink">Following</a></li>
       </ul>
     </nav>
-    <h1>Account details</h1>
+    <h1>
+      Account details
+      <img class="avatar" src="<%= current_user.avatar %>">
+    </h1>
     <%= form_for(current_user, url: account_path, html: { class: 'form--inpage' }) do |form| %>
       <div class="input-group input-group--horizontal">
         <%= form.label(:email, class: 'input-group__label') %>
@@ -21,6 +24,10 @@
       <div class="input-group input-group--horizontal">
         <%= form.label(:avatar_url, class: 'input-group__label') %>
         <%= form.text_field(:avatar_url, class: 'input-group__field') %>
+      </div>
+      <div class="input-group input-group--horizontal">
+        <%= form.label(:avatar, class: 'input-group__label') %>
+        <%= form.file_field(:avatar, class: 'input-group__field') %>
       </div>
       <div class="prompt">
         <a class="prompt__cancel" href="#cancel">Cancel</a>
