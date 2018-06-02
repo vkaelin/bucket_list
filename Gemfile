@@ -36,6 +36,8 @@ gem 'bcrypt' # User password managment
 gem 'kaminari' # Page system
 gem 'unsplash' # Random image for ideas
 gem 'carrierwave', '~> 1.1.0' # Upload image for avatar
+gem "figaro" # Secure config
+gem "fog-aws" # Carrierwave communicate with AWS S3
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
