@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt' # User password managment
 gem 'kaminari' # Page system
 gem 'unsplash' # Random image for ideas
-gem 'carrierwave', '~> 1.1.0' # Upload image for avatar
+gem 'carrierwave', '~> 1.3.2' # Upload image for avatar
 gem "figaro" # Secure config
 gem "fog-aws" # Carrierwave communicate with AWS S3
 
